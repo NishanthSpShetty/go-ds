@@ -1,6 +1,9 @@
 package cache
 
-import "container/list"
+import (
+	"container/list"
+	"fmt"
+)
 
 type CacheItem struct {
 	key             string
@@ -18,4 +21,12 @@ type Cache struct {
 	freqs    *list.List
 	capacity int
 	size     int
+}
+
+func (f *FrequencyItem) String() string {
+	return fmt.Sprintf(" frequncy %d, entries %v ", f.freq, f.entries)
+}
+
+func (cI *CacheItem) String() string {
+	return fmt.Sprintf("{:key %s, :value %v}", cI.key, cI.value)
 }
